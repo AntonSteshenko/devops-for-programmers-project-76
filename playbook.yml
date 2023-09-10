@@ -3,6 +3,7 @@
 
   vars_files:
     - group_vars/vars.yml
+    - group_vars/all/vault.yml
 
   tasks:
     - name: Install pip
@@ -14,3 +15,38 @@
     - name: include role
       include_role:
         name: geerlingguy.pip
+
+    - name: create directory
+      file:
+        path: /home/redmine
+        state: directory
+
+    - name: Stop all services
+      community.docker.docker_compose:
+        project_src: /home/redmine
+        build: false
+        stopped: true
+      tags: deploy
+
+    - name: copy docker-compose
+      copy:
+        src: ./docker-compose.yml
+        dest: /home/redmine/docker-compose.yml
+      tags: deploy
+
+    - name: create .env
+      template:
+        src: templates/env.j2
+        dest: /home/redmine/.env
+      tags: deploy
+
+    - name: Create and start services
+      community.docker.docker_compose:
+        project_src: /home/redmine/
+      register: output
+      tags: deploy
+
+    - name: Show results
+      ansible.builtin.debug:
+        var: output
+      tags: deploy
