@@ -4,8 +4,10 @@
   vars_files:
     - group_vars/webservers/vault.yml
 
-  roles:
-    - { role: datadog.datadog, become: yes }
+  tasks:
+    - name: datadog agent install
+      import_role:
+        name: datadog.dd.agent
   vars:
     datadog_api_key: "{{ vault_datadog_api_key }}"
     datadog_site: "datadoghq.eu"
