@@ -19,12 +19,12 @@
         path: /home/redmine
         state: directory
 
-    - name: Stop all services
-      community.docker.docker_compose:
-        project_src: /home/redmine
-        build: false
-        stopped: true
-      tags: deploy
+    # - name: Stop all services
+    #   community.docker.docker_compose:
+    #     project_src: /home/redmine
+    #     build: false
+    #     stopped: true
+    #   tags: deploy
 
     - name: copy docker-compose
       copy:
