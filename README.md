@@ -4,6 +4,9 @@ requirements:
 - make
 
 $ make install-ansible-deps
+
+$ make e
+
 $ make setup-servers
 
 then test: www.rdas.site
@@ -11,6 +14,12 @@ then test: www.rdas.site
 For next deploys:
 
 $ make deploy
+
+To change root password MySQL:
+
+create .pass file with vault password
+
+$ make change-secrets
 
 ### Hexlet tests and linter status:
 
