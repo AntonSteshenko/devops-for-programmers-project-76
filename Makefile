@@ -2,7 +2,7 @@ install-ansible-deps:
 	ansible-galaxy install -r requirements.yml
 
 setup-servers:
-	ansible-playbook -i inventory.ini playbook.yml
+	ansible-playbook -i inventory.ini playbook.yml --vault-password-file .pass
 
 deploy:
 	ansible-playbook -i inventory.ini playbook.yml --tags deploy --vault-password-file .pass

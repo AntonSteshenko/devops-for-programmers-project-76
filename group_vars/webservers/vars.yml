@@ -1,6 +1,3 @@
-pip_install_packages:
-  - name: docker
-  - name: docker-compose
 redmine_db_mysql: db
 mysql_database: redmine
 mysql_root_password: "{{ vault_mysql_root_password }}"

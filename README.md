@@ -3,23 +3,31 @@ requirements:
 - ansible
 - make
 
-$ make install-ansible-deps
+1. Create ./.pass file and put there your ansible password
 
-$ make e
+2. Edit inventory.ini file to change server's addresses
 
-$ make setup-servers
+3. Install ansible libraries:
+   `$ make install-ansible-deps`
 
-then test: www.rdas.site
+4. To change secrets:
+   `$ make change-secrets`
+
+5. Then setup Redmine servers
+   `$ make setup-servers`
+
+Test it: https://www.rdas.site
 
 For next deploys:
+`$ make deploy`
 
-$ make deploy
+If you use DataDog monitoring:
 
-To change root password MySQL:
+1. Put your datadog api key in secrets:
+   `$ make change-secrets`
 
-create .pass file with vault password
-
-$ make change-secrets
+2. Install datadog agents and checks:
+   `make install datadog`
 
 ### Hexlet tests and linter status:
 

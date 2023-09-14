@@ -2,6 +2,7 @@
   remote_user: "{{ deploy_user }}"
 
   vars_files:
+    - group_vars/all/vars.yml
     - group_vars/webservers/vars.yml
   tasks:
     - name: Install pip
@@ -18,13 +19,6 @@
       file:
         path: /home/redmine
         state: directory
-
-    # - name: Stop all services
-    #   community.docker.docker_compose:
-    #     project_src: /home/redmine
-    #     build: false
-    #     stopped: true
-    #   tags: deploy
 
     - name: copy docker-compose
       copy:
