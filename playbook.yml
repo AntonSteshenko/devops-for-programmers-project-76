@@ -1,9 +1,6 @@
 - hosts: all
   remote_user: "{{ deploy_user }}"
 
-  vars_files:
-    - group_vars/all/vars.yml
-    - group_vars/webservers/vars.yml
   tasks:
     - name: Install pip
       apt:
