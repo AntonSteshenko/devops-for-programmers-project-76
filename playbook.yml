@@ -2,12 +2,6 @@
   remote_user: "{{ deploy_user }}"
 
   tasks:
-    - name: Install pip
-      apt:
-        update_cache: yes
-        name:
-          - python3-pip
-
     - name: include role
       include_role:
         name: geerlingguy.pip
