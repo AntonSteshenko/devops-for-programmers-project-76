@@ -44,7 +44,7 @@
       http_check:
         init_config:
         instances:
-          - name: localhost
+          - name: http_check
             url: http://localhost
             timeout: 5
             content_match: "Redmine"
