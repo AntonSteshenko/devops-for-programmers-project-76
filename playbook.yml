@@ -38,13 +38,3 @@
       import_role:
         name: datadog.dd.agent
       tags: datadog
-
-  vars:
-    datadog_checks:
-      http_check:
-        init_config:
-        instances:
-          - name: http_check
-            url: http://localhost
-            timeout: 5
-            content_match: "Redmine"
