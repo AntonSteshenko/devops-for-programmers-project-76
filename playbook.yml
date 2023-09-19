@@ -1,6 +1,9 @@
 - hosts: all
   remote_user: "{{ deploy_user }}"
 
+  roles:
+    - { role: datadog.datadog, become: true }
+
   tasks:
     - name: include role
       include_role:
@@ -34,7 +37,7 @@
         var: output
       tags: deploy
 
-    - name: datadog agent install
-      import_role:
-        name: datadog.dd.agent
-      tags: datadog
+    # - name: datadog agent install
+    #   import_role:
+    #     name: datadog.dd.agent
+    #   tags: datadog
