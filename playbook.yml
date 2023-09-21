@@ -2,7 +2,7 @@
   remote_user: "{{ deploy_user }}"
 
   roles:
-    - { role: Datadog.datadog, become: true }
+    - { role: datadog.datadog, become: true }
 
   tasks:
     - name: include role
