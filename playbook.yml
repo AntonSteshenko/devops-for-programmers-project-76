@@ -2,7 +2,7 @@
   remote_user: "{{ deploy_user }}"
 
   roles:
-    - { role: Datadog.datadog, become: true }
+    - { role: datadog.datadog, become: true }
 
   tasks:
     - name: include role
@@ -36,18 +36,3 @@
       ansible.builtin.debug:
         var: output
       tags: deploy
-
-    # - name: datadog agent install
-    #   import_role:
-    #     name: datadog.dd.agent
-    #   tags: datadog
-
-  vars:
-    datadog_checks:
-      http_check:
-        init_config:
-        instances:
-          - name: http_check
-            url: http://localhost
-            timeout: 5
-            content_match: "Redmine"
