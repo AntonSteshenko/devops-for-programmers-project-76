@@ -9,3 +9,4 @@ datadog_checks:
         url: http://localhost
         timeout: 5
         content_match: "Redmine"
+datadog_config:
