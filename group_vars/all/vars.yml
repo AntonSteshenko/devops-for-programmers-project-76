@@ -1,15 +1,3 @@
 pip_install_packages:
   - name: docker
   - name: docker-compose
-datadog_checks:
-  http_check:
-    init_config:
-    instances:
-      - name: http_check
-        url: http://localhost
-        timeout: 5
-        content_match: "Redmine"
-datadog_config:
-  log_level: 'info'
-  tags:
-    - team:infra
