@@ -10,3 +10,6 @@ datadog_checks:
         timeout: 5
         content_match: "Redmine"
 datadog_config:
+  log_level: 'info'
+  tags:
+    - team:infra
