@@ -1,0 +1,22 @@
+- hosts: webservers
+  remote_user: "{{ deploy_user }}"
+
+  vars_files:
+    - group_vars/webservers/vault.yml
+
+  tasks:
+    - name: datadog agent install
+      import_role:
+        name: datadog.dd.agent
+  vars:
+    datadog_api_key: "{{ vault_datadog_api_key }}"
+    datadog_site: "datadoghq.eu"
+    datadog_checks:
+      http_check:
+        init_config:
+
+        instances:
+          - name: localhost
+            url: http://localhost
+            timeout: 5
+            content_match: "Redmine"
